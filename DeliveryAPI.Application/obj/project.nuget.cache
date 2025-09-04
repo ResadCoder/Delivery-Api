@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "ydvQm4M7THw=",
+  "success": true,
+  "projectFilePath": "/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Application/DeliveryAPI.Application.csproj",
+  "expectedPackageFiles": [
+    "/Users/resadsadiqov/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
+    "/Users/resadsadiqov/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
+    "/Users/resadsadiqov/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.0.0/fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",
+    "/Users/resadsadiqov/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/2.1.0/microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

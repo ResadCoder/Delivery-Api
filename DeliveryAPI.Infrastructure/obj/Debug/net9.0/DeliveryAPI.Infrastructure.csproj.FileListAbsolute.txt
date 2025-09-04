@@ -1,0 +1,17 @@
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/bin/Debug/net9.0/DeliveryAPI.Infrastructure.deps.json
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/bin/Debug/net9.0/DeliveryAPI.Infrastructure.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/bin/Debug/net9.0/DeliveryAPI.Infrastructure.pdb
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/bin/Debug/net9.0/DeliveryAPI.Application.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/bin/Debug/net9.0/DeliveryAPi.Domain.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/bin/Debug/net9.0/DeliveryAPI.Application.pdb
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/bin/Debug/net9.0/DeliveryAPi.Domain.pdb
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/DeliveryAPI.Infrastructure.csproj.AssemblyReference.cache
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/DeliveryAPI.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/DeliveryAPI.Infrastructure.AssemblyInfoInputs.cache
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/DeliveryAPI.Infrastructure.AssemblyInfo.cs
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/DeliveryAPI.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/Delivery.38BC9315.Up2Date
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/DeliveryAPI.Infrastructure.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/refint/DeliveryAPI.Infrastructure.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/DeliveryAPI.Infrastructure.pdb
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Infrastructure/obj/Debug/net9.0/ref/DeliveryAPI.Infrastructure.dll

@@ -1,0 +1,8 @@
+using DeliveryAPI.Infrastructure.Models;
+
+namespace DeliveryAPI.Application.Abstractions;
+
+public interface IEmailService
+{
+  Task SendConfirmationOtpAsync(string recieverEmail,SendConfirmOtpViewModel model,CancellationToken cancellationToken = default);
+}

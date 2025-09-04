@@ -1,0 +1,11 @@
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/bin/Debug/net9.0/DeliveryAPi.Domain.deps.json
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/bin/Debug/net9.0/DeliveryAPi.Domain.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/bin/Debug/net9.0/DeliveryAPi.Domain.pdb
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/DeliveryAPi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/DeliveryAPi.Domain.AssemblyInfoInputs.cache
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/DeliveryAPi.Domain.AssemblyInfo.cs
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/DeliveryAPi.Domain.csproj.CoreCompileInputs.cache
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/DeliveryAPi.Domain.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/refint/DeliveryAPi.Domain.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/DeliveryAPi.Domain.pdb
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/ref/DeliveryAPi.Domain.dll
