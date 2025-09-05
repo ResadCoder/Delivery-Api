@@ -122,19 +122,21 @@ public class OrderService(
         // }
         Order order = await orderRepository.GetByIdAsync(dto.Id,includes: [nameof(Order.OrderRequests)], isTracking:true, cancellationToken: cancellationToken)
             ?? throw new NotFoundException("Order not found");
+
+        if(order.Status != OrderStatusEnum.Pending)
+            throw new NotPendingException("Not pending order");
         
-        _ = order.OrderRequests.Any(r => r.CourierProfileId == userIdentity.CurierProfileId)
-            ? throw new AlreadyExistException("You have already requested this order.")
-            : true;
+        if (order.OrderRequests.Any(r => r.CourierProfileId == userIdentity.CurierProfileId))
+            throw new AlreadyExistException("You have already requested this order.");
         
         order.OrderRequests.Add(new OrderRequest
         {
             Price = dto.Price,
-            CourierProfileId = (int)userIdentity.CurierProfileId!,
-            OrderId = order.Id,
+            CourierProfileId = (int)userIdentity.CurierProfileId!
         });
         
          await unitOfWork.SaveChangesAsync(cancellationToken);
     }
+    
 
 }
