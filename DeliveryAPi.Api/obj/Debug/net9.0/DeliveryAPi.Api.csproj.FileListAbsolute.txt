@@ -281,3 +281,4 @@
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Api/bin/Debug/net9.0/Pipelines.Sockets.Unofficial.dll
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Api/bin/Debug/net9.0/StackExchange.Redis.dll
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Api/bin/Debug/net9.0/CloudinaryDotNet.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Api/obj/Debug/net9.0/DeliveryAPi.Api.sourcelink.json

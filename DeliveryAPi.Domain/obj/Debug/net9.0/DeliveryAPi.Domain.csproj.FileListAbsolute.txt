@@ -9,3 +9,4 @@
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/refint/DeliveryAPi.Domain.dll
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/DeliveryAPi.Domain.pdb
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/ref/DeliveryAPi.Domain.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Domain/obj/Debug/net9.0/DeliveryAPi.Domain.sourcelink.json

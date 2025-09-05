@@ -12,4 +12,7 @@ public interface IOrderService
     Task UpdateOrderAsync(PutOrderDto dto, CancellationToken cancellationToken);
     
     Task<IEnumerable<GetOrderItemDto>> GetAllOrdersAsync(int page,int take,CancellationToken cancellationToken);
+    Task<GetOrderDto> GetOrderAsync(int id, CancellationToken cancellationToken);
+    
+    Task MakeOrderRequest(RequestOrderDto dto,CancellationToken cancellationToken);
 }

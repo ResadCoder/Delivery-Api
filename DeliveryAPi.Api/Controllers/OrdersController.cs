@@ -1,3 +1,4 @@
+using DeliveryAPi.Api.Attributes;
 using DeliveryAPI.Application.Abstractions;
 using DeliveryAPI.Application.DTOs.Orders;
 using Microsoft.AspNetCore.Authorization;
@@ -20,6 +21,7 @@ public class OrdersController(IOrderService orderService) : ControllerBase
 
     [Authorize(Roles = "Customer")] 
     [HttpGet]
+    [PaginationValidate]
     public async Task<IActionResult> GetOrders(int page = 1, int take = 10, CancellationToken cancellationToken = default)
     {
         return Ok( await orderService.GetAllOrdersAsync(page, take, cancellationToken));
@@ -27,6 +29,7 @@ public class OrdersController(IOrderService orderService) : ControllerBase
     
     [Authorize(Roles = "Customer")] 
     [HttpDelete("{id}")]
+    [ValidateId]
 
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
@@ -42,4 +45,21 @@ public class OrdersController(IOrderService orderService) : ControllerBase
         await orderService.UpdateOrderAsync(dto, cancellationToken);
         return NoContent();
     }
+
+    [Authorize(Roles = "Customer")]
+    [HttpGet("{id}")]
+    [ValidateId]
+    public async Task<IActionResult> GetOrder(int id, CancellationToken cancellationToken)
+    {
+        return Ok(await orderService.GetOrderAsync(id, cancellationToken));
+    }
+    
+    [Authorize(Roles = "Curier")]
+    [HttpPut("request")]
+    public async Task<IActionResult> MakeOrderRequest( RequestOrderDto dto, CancellationToken cancellationToken)
+    {
+        await orderService.MakeOrderRequest(dto, cancellationToken);
+        return NoContent();
+    }
+    
 }

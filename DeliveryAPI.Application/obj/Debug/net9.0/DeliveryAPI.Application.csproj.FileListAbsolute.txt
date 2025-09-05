@@ -13,3 +13,4 @@
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Application/obj/Debug/net9.0/refint/DeliveryAPI.Application.dll
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Application/obj/Debug/net9.0/DeliveryAPI.Application.pdb
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Application/obj/Debug/net9.0/ref/DeliveryAPI.Application.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Application/obj/Debug/net9.0/DeliveryAPI.Application.sourcelink.json

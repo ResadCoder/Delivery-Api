@@ -17,3 +17,4 @@
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Persistence/obj/Debug/net9.0/DeliveryAPI.Persistence.pdb
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Persistence/obj/Debug/net9.0/DeliveryAPI.Persistence.genruntimeconfig.cache
 /Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Persistence/obj/Debug/net9.0/ref/DeliveryAPI.Persistence.dll
+/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPI.Persistence/obj/Debug/net9.0/DeliveryAPI.Persistence.sourcelink.json

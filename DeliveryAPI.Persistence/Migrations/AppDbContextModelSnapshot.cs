@@ -156,6 +156,7 @@ namespace DeliveryAPI.Persistence.Migrations
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 

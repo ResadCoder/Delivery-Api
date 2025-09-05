@@ -7,7 +7,7 @@ public class Order : BaseEntity
 {
     public string? Description { get; set; }
     public DateTime DeliveryDate { get; set; }
-    public string? ImageUrl { get; set; } 
+    public string ImageUrl { get; set; } = null!;
     public decimal Price { get; set; } 
     public string ReciverName { get; set; } =  null!;
     public string ReciverAddress { get; set; } =  null!;

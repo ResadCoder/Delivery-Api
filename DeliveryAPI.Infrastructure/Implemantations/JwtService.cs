@@ -31,8 +31,8 @@ internal class JwtService(IConfiguration configuration): IJwtService
             new Claim(ClaimTypes.GivenName, user.Name),
             new Claim(ClaimTypes.Surname , user.Surname),
             new Claim(ClaimTypes.Role , user.Role.ToString()),
-            new Claim("UserProfileId", user.UserProfile?.Id.ToString()),
-            new Claim("CurierProfileId", user.CurierProfile?.Id.ToString()),
+            new Claim("UserProfileId", user.UserProfile?.Id.ToString() ?? string.Empty),
+            new Claim("CurierProfileId", user.CurierProfile?.Id.ToString()?? string.Empty),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
         SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"]!));
