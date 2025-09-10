@@ -100,16 +100,23 @@ internal class GenericRepository<T>(AppDbContext context) : IGenericRepository<T
 
     public IQueryable<T> GetAny(
         Expression<Func<T, bool>> predicate,
+        Expression<Func<T, object>>? orderBy = null,
+        bool isDescending = false,
         bool isTracking = false,
         params string[]? includes
-        )
+    )
     {
         IQueryable<T> query = _table.Where(predicate);
+
         if (!isTracking)
             query = query.AsNoTracking();
+
         if (includes is not null && includes.Length > 0)
             query = ApplyIncludes(query, includes);
-        
+
+        if (orderBy is not null)
+            query = isDescending ? query.OrderByDescending(orderBy) : query.OrderBy(orderBy);
+
         return query;
     }
 

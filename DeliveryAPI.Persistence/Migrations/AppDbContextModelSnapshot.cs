@@ -56,7 +56,7 @@ namespace DeliveryAPI.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("OtpCodes");
+                    b.ToTable("OtpCodes", (string)null);
                 });
 
             modelBuilder.Entity("DeliveryAPi.Domain.Entities.Base.UserAuthSession", b =>
@@ -90,7 +90,7 @@ namespace DeliveryAPI.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserAuthSessions");
+                    b.ToTable("UserAuthSessions", (string)null);
                 });
 
             modelBuilder.Entity("DeliveryAPi.Domain.Entities.CurierProfile", b =>
@@ -128,7 +128,7 @@ namespace DeliveryAPI.Persistence.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("CurierProfiles");
+                    b.ToTable("CurierProfiles", (string)null);
                 });
 
             modelBuilder.Entity("DeliveryAPi.Domain.Entities.Order", b =>
@@ -198,7 +198,7 @@ namespace DeliveryAPI.Persistence.Migrations
 
                     b.HasIndex("UserProfileId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("DeliveryAPi.Domain.Entities.OrderRequest", b =>
@@ -234,7 +234,7 @@ namespace DeliveryAPI.Persistence.Migrations
                     b.HasIndex("OrderId", "CourierProfileId")
                         .IsUnique();
 
-                    b.ToTable("OrderRequests");
+                    b.ToTable("OrderRequests", (string)null);
                 });
 
             modelBuilder.Entity("DeliveryAPi.Domain.Entities.User", b =>
@@ -293,7 +293,7 @@ namespace DeliveryAPI.Persistence.Migrations
                     b.HasIndex("PhoneNumber")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("DeliveryAPi.Domain.Entities.UserProfile", b =>
@@ -324,7 +324,7 @@ namespace DeliveryAPI.Persistence.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("UserProfiles");
+                    b.ToTable("UserProfiles", (string)null);
                 });
 
             modelBuilder.Entity("DeliveryAPi.Domain.Entities.Base.OtpCode", b =>

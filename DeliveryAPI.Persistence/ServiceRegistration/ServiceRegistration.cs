@@ -1,6 +1,7 @@
 using DeliveryAPI.Application.Abstractions;
 using DeliveryAPI.Application.Abstractions.Repositories.Curier;
 using DeliveryAPI.Application.Abstractions.Repositories.Order;
+using DeliveryAPI.Application.Abstractions.Repositories.OrderRequest;
 using DeliveryAPI.Application.Abstractions.Repositories.UserProfiles;
 using DeliveryAPI.Application.Abstractions.Repositories.Users;
 using DeliveryAPI.Application.Abstractions.UnitOfWork;
@@ -33,6 +34,8 @@ public static class ServiceRegistration
     {
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IOrderService, OrderService>();
+        services.AddScoped<IOrderRequestService, OrderRequestService>();
+        
     }
 
     private static void AddRepositories(this IServiceCollection services)
@@ -41,6 +44,8 @@ public static class ServiceRegistration
         services.AddScoped<IOrderRepository, OrderRepository>();
         services.AddScoped<IUserProfileRepository, UserProfileRepository>();
         services.AddScoped<ICourierProfileRepository, CurierProfileRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<IOrderRequestRepository, OrderRequestRepository>();
 
     }
 

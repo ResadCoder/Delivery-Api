@@ -1,5 +1,6 @@
 using DeliveryAPI.Persistence.ServiceRegistration;
 using System.Diagnostics;
+using DeliveryAPi.Api.Middleware;
 using DeliveryAPI.Application.ServiceRegistration;
 using DeliveryAPI.Infrastructure.ServiceRegistration;
 using Microsoft.OpenApi.Models;
@@ -52,6 +53,7 @@ var app = builder.Build();
     app.UseSwagger();
     app.UseSwaggerUI();
 
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

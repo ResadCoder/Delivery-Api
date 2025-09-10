@@ -1,4 +1,5 @@
 using DeliveryAPI.Application.Abstractions;
+using DeliveryAPI.Application.Abstractions.Repositories.Curier;
 using DeliveryAPI.Application.Abstractions.Repositories.Order;
 using DeliveryAPI.Application.Abstractions.Repositories.Users;
 using DeliveryAPI.Application.Abstractions.UnitOfWork;
@@ -6,6 +7,7 @@ using DeliveryAPI.Application.DTOs.Orders;
 using DeliveryAPI.Application.Exceptions.Common;
 using DeliveryAPi.Domain.Entities;
 using DeliveryAPi.Domain.Enums;
+using DeliveryAPI.Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeliveryAPI.Persistence.Implementations.Services;
@@ -15,7 +17,9 @@ public class OrderService(
     IUserRepository userRepository,
     IOrderRepository orderRepository,
     IUnitOfWork unitOfWork,
-    ICloudinaryService cloudinaryService
+    ICloudinaryService cloudinaryService,
+    ICourierProfileRepository courierProfileRepository,
+    IEmailService emailService
 ) : IOrderService
 {
     public async Task CreateOrderAsync(OrderPostDto orderPostDto, CancellationToken cancellationToken)
@@ -116,10 +120,6 @@ public class OrderService(
     
     public async Task MakeOrderRequest(RequestOrderDto dto, CancellationToken cancellationToken)
     {
-        // if (userIdentity.CurierProfileId == null)
-        // {
-        //     throw new Exception("CurierProfileId not found");
-        // }
         Order order = await orderRepository.GetByIdAsync(dto.Id,includes: [nameof(Order.OrderRequests)], isTracking:true, cancellationToken: cancellationToken)
             ?? throw new NotFoundException("Order not found");
 
@@ -137,6 +137,113 @@ public class OrderService(
         
          await unitOfWork.SaveChangesAsync(cancellationToken);
     }
-    
 
+    public async Task TakeOrder(int orderId, CancellationToken cancellationToken)
+    {
+        var order = await orderRepository.GetByIdAsync(
+            orderId,
+            isTracking: true,
+            cancellationToken: cancellationToken,
+            includes:
+            [
+                nameof(Order.CurierProfile) + "." + nameof(CurierProfile.User),
+                nameof(Order.UserProfile) + "." + nameof(UserProfile.User)
+            ]
+        ) ?? throw new NotFoundException("Order not found");
+
+        if (order.Status != OrderStatusEnum.Pending)
+            throw new NotPendingException("Already taken or canceled");
+        
+        
+        // var courier = await courierProfileRepository.GetByIdAsync(
+        //     (int)userIdentity.CurierProfileId!,
+        //     isTracking: true,
+        //     cancellationToken: cancellationToken,
+        //     includes: ["User"] 
+        // ) ?? throw new NotFoundException("Courier profile not found");
+        
+        order.CourierId = userIdentity.CurierProfileId;
+        order.Status = OrderStatusEnum.Accepted;
+       
+
+        await unitOfWork.SaveChangesAsync(cancellationToken);
+
+        var emailModel = new SendOrderStatusViewModel(
+            ReceiverName: order.ReciverName,
+            Status: order.Status,
+            CurierName: userIdentity.Name,
+            CurierPhoneNumber: order.CurierProfile!.User.PhoneNumber,
+            CurierCarNumber: order.CurierProfile.TransportNumber
+        );
+
+        await emailService.SendOrderStatusAsync(order.UserProfile!.User.Email, emailModel, cancellationToken);
+    }
+
+    public async Task CancelOrderByCurier(int orderId, CancellationToken cancellationToken)
+    {
+        Order order =
+            await orderRepository.GetByIdAsync(orderId, isTracking: true, cancellationToken: cancellationToken)
+            ?? throw new NotFoundException("Order not found");
+
+        if (order.CourierId == null)
+            throw new NotFoundException("Courier has not been found yet");
+
+
+        if (order.CourierId != userIdentity.CurierProfileId)
+            throw new ForbiddenException("U cannot change other person's order");
+
+        if (order.Status != OrderStatusEnum.Accepted)
+            throw new BadRequestException("Only Accepted orders can be canceled");
+
+        if (order.UpdatedAt.AddMinutes(10) < DateTime.UtcNow)
+            throw new BadRequestException("You can cancel the order only after 10 minutes from acceptance");
+
+        order.Status = OrderStatusEnum.Pending;
+        order.CourierId = null;
+        await unitOfWork.SaveChangesAsync(cancellationToken);
+
+        var emailModel = new SendOrderStatusViewModel(
+            ReceiverName: order.ReciverName,
+            Status: order.Status,
+            CurierName: null,
+            CurierPhoneNumber: null,
+            CurierCarNumber: null
+        );
+        await emailService.SendOrderStatusAsync(order.UserProfile!.User.Email, emailModel, cancellationToken);
+    }
+
+    public async Task SelectOrderFromOrderRequest(int orderId, int orderRequestId, CancellationToken cancellationToken)
+    {
+        Order order = await orderRepository.GetAnyAsync(
+            o => o.Id == orderId && o.UserProfileId == userIdentity.UserProfileId,
+            isTracking: true,
+            cancellationToken: cancellationToken,
+            includes: nameof(Order.OrderRequests) + "." + nameof(OrderRequest.CourierProfile) + "." + nameof(CurierProfile.User)
+        ) ?? throw new NotFoundException("Order not found");
+
+        if (order.Status != OrderStatusEnum.Pending)
+            throw new BadRequestException("Order already taken or delivered");
+
+        if (order.OrderRequests.Count == 0)
+            throw new NotFoundException("No order requests found");
+        
+        OrderRequest orderRequest = order.OrderRequests.FirstOrDefault(r => r.Id == orderRequestId)
+                                    ?? throw new NotFoundException("Order request not found");
+        
+        order.Price = orderRequest.Price;
+        order.CourierId = orderRequest.CourierProfileId;
+        order.Status = OrderStatusEnum.Accepted;
+
+        await unitOfWork.SaveChangesAsync(cancellationToken);
+        
+        var emailModel = new SendOrderStatusViewModel(
+            ReceiverName: order.ReciverName,
+            Status: order.Status,
+            CurierName: orderRequest.CourierProfile.User.Name,
+            CurierPhoneNumber: orderRequest.CourierProfile.User.PhoneNumber,
+            CurierCarNumber: orderRequest.CourierProfile.TransportNumber
+        );
+
+        await emailService.SendOrderStatusAsync(userIdentity.Email, emailModel, cancellationToken);
+    }
 }

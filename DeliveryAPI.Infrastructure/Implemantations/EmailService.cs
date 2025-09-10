@@ -16,6 +16,15 @@ public class EmailService(IConfiguration configuration,IRazerRenderViewService r
         await SendEmailAsync(recieverEmail, body,"Confirm your email", cancellationToken: cancellationToken);
     }
 
+    public async Task SendOrderStatusAsync(string recieverEmail, SendOrderStatusViewModel model,
+        CancellationToken cancellationToken = default)
+    {
+        string body = await renderViewService.RenderViewToStringAsync("OrderStatusView", model);
+        
+        await SendEmailAsync(recieverEmail, body, $"Sifarişinizin statusu: {model.Status}", cancellationToken: cancellationToken);
+    }
+
+
     private async Task SendEmailAsync(string reciever, string body, string subject, bool isBodyHtml = true,CancellationToken cancellationToken = default)
     {
         

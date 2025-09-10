@@ -31,3 +31,7 @@ build_property.EnableCodeStyleSeverity =
 [/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Api/Views/EmailTemplates/ConfirmEmailView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1haWxUZW1wbGF0ZXMvQ29uZmlybUVtYWlsVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/resadsadiqov/RiderProjects/DeliveryAPI/DeliveryAPi.Api/Views/EmailTemplates/OrderStatusView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1haWxUZW1wbGF0ZXMvT3JkZXJTdGF0dXNWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

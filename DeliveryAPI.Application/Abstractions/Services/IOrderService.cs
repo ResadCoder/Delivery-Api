@@ -15,5 +15,10 @@ public interface IOrderService
     Task<GetOrderDto> GetOrderAsync(int id, CancellationToken cancellationToken);
     
     Task MakeOrderRequest(RequestOrderDto dto,CancellationToken cancellationToken);
+    Task TakeOrder(int orderId, CancellationToken cancellationToken);
+    
+    Task CancelOrderByCurier(int orderId, CancellationToken cancellationToken);
+    
+    Task SelectOrderFromOrderRequest(int orderId, int orderRequestId, CancellationToken cancellationToken);
     
 }

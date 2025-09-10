@@ -10,5 +10,7 @@ public class CurierProfile : BaseEntity
     public  TransportEnum Transport { get; set; }
     public int UserId { get; set; }
     public User User { get; set; } = null!;
+    
     public ICollection<OrderRequest> OrderRequests { get; set; } = new List<OrderRequest>();
+    public ICollection<Order> TakenOrders { get; set; } = new List<Order>();
 }

@@ -37,6 +37,8 @@ public interface IGenericRepository<T> where T : BaseEntity , new()
     
     IQueryable<T> GetAny(
         Expression<Func<T, bool>> predicate,
+        Expression<Func<T, object>>? orderBy = null,
+        bool isDescending = false,
         bool isTracking = false,
         params string[]? includes);
 

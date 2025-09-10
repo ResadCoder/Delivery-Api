@@ -15,12 +15,24 @@ public class Order : BaseEntity
     public float? Rating { get; set; } 
     
     public int? UserProfileId { get; set; }
-    public UserProfile? UserProfile { get; set; } = null!;
+    public UserProfile? UserProfile { get; set; } 
     
     public int? CourierId { get; set; }
     public CurierProfile? CurierProfile { get; set; } 
     
-    public OrderStatusEnum Status { get; set; } 
+    
+    // private OrderStatusEnum _status = OrderStatusEnum.Pending;
+    // public OrderStatusEnum Status
+    // {
+    //     get
+    //     {
+    //         if (CourierId != null && _status == OrderStatusEnum.Pending)
+    //             return OrderStatusEnum.Accepted;
+    //         return _status;
+    //     }
+    //     set => _status = value;
+    // }
+    public OrderStatusEnum Status { get; set; }
     
     public ICollection<OrderRequest> OrderRequests { get; set; } = new List<OrderRequest>();
     

@@ -62,4 +62,16 @@ public class OrdersController(IOrderService orderService) : ControllerBase
         return NoContent();
     }
     
+    
+    
+    [Authorize(Roles = "Curier")]
+    [HttpPut("take")]
+    [ValidateId("orderId")]
+    public async Task<IActionResult> TakeOrder(int orderId, CancellationToken cancellationToken)
+    {
+        await orderService.TakeOrder(orderId, cancellationToken);
+        return NoContent();
+    }
+    
+    
 }

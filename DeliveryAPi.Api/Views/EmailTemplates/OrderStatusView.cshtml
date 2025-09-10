@@ -1,0 +1,27 @@
+@model DeliveryAPI.Infrastructure.Models.SendOrderStatusViewModel
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Salam @Model.ReceiverName,</h2>
+
+<p>Sizin sifariş statusu dəyişdi: <strong>@Model.Status</strong></p>
+
+@if (!string.IsNullOrEmpty(Model.Description))
+{
+    <p>Qeyd: @Model.Description</p>
+}
+
+@if (!string.IsNullOrEmpty(Model.CurierName))
+{
+    <h3>Kuriyer məlumatları:</h3>
+    <ul>
+        <li>Ad: @Model.CurierName</li>
+        <li>Telefon: @Model.CurierPhoneNumber</li>
+        <li>Avtomobil nömrəsi: @Model.CurierCarNumber</li>
+    </ul>
+}
+
+<p>Bizimlə olduğunuz üçün təşəkkür edirik!</p>
+</body>
+</html>
