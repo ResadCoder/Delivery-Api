@@ -20,14 +20,14 @@ namespace DeliveryAPi.Api.Middleware
                 var res = new { Status = (int)ex.Status, Message = ex.Message };
                 await context.Response.WriteAsJsonAsync(res);
             }
-            // catch (Exception)
-            // {
-            //     context.Response.ContentType = "application/json";
-            //     context.Response.StatusCode = 500;
-            //
-            //     var res = new { Status = 500, Message = "Unexpected error occurred." };
-            //     await context.Response.WriteAsJsonAsync(res);
-            // }
+            catch (Exception)
+            {
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = 500;
+            
+                var res = new { Status = 500, Message = "Unexpected error occurred." };
+                await context.Response.WriteAsJsonAsync(res);
+            }
         }
     }
 }
